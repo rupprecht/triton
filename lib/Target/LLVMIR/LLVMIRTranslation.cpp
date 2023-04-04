@@ -25,6 +25,7 @@
 #include "llvm/IRReader/IRReader.h"
 #include "llvm/Linker/Linker.h"
 #include "llvm/Support/SourceMgr.h"
+#include "third_party/py/triton/google/find_cuda.h"
 #include <dlfcn.h>
 #include <filesystem>
 #include <iterator>
@@ -163,9 +164,8 @@ static std::map<std::string, std::string> getExternLibs(mlir::ModuleOp module) {
       }
       return std::filesystem::path(fileinfo.dli_fname);
     }();
-    static const auto runtime_path =
-        this_library_path.parent_path().parent_path() / "third_party" / "cuda" /
-        "lib" / "libdevice.10.bc";
+    static const auto runtime_path = (
+        fs::path(PathToLibdevice()) / "libdevice.10.bc");
     if (fs::exists(runtime_path)) {
       externLibs.try_emplace(libdevice, runtime_path.string());
     } else {

@@ -1,4 +1,0 @@
-graft src
-graft triton/third_party
-graft triton/runtime/backends/
-graft triton/language/extra
