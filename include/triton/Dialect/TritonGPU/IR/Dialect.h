@@ -80,6 +80,8 @@ bool isSharedEncoding(Value value);
 } // namespace gpu
 } // namespace triton
 
+bool isExpensiveCat(triton::CatOp cat, Attribute &targetEncoding);
+
 } // namespace mlir
 
 #endif // TRITON_DIALECT_TRITONGPU_IR_DIALECT_H_
