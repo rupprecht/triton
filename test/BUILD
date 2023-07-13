@@ -9,6 +9,7 @@
 # )
 # 
 # glob_lit_tests(
+#     name = "all_tests",
 #     data = [
 #         "@llvm-project//llvm:FileCheck",
 #         "//:triton-opt",
